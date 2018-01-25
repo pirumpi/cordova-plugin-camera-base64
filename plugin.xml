@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"  id="cordova-plugin-camera-base64" version="0.0.1">
+  <name>CameraBase64</name>
+  <description>Cordova plugin to get a base64 stream from the camera in iOS</description>
+  <license>MIT</license>
+  <keywords>cordova,plugin,base64,ios</keywords>
+  <repo>https://github.com/pirumpi/cordova-plugin-camera-base64.git</repo>
+  <issue>https://github.com/pirumpi/cordova-plugin-camera-base64/issues</issue>
+
+  <js-module src="www/CanvasCamera.js" name="CanvasCamera">
+    <clobbers target="CanvasCamera"/>
+  </js-module>
+
+  <!-- ios -->
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="CanvasCamera">
+        <param name="ios-package" value="CanvasCamera"/>
+      </feature>
+    </config-file>
+     <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+      <string>$CAMERA_USAGE_DESCRIPTION</string>
+    </config-file>
+    <preference name="CAMERA_USAGE_DESCRIPTION" default="Get a base64 stream"/>
+    <source-file src="src/ios/CanvasCamera.h"/>
+    <source-file src="src/ios/CanvasCamera.m"/>
+  </platform>
+
+  <!-- android -->
+
+</plugin>
